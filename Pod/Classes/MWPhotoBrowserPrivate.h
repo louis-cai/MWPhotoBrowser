@@ -14,34 +14,33 @@
 
 // Declare private methods of browser
 @interface MWPhotoBrowser () {
-    
-	// Data
+    // Data
     NSUInteger _photoCount;
     NSMutableArray *_photos;
     NSMutableArray *_thumbPhotos;
-	NSArray *_fixedPhotosArray; // Provided via init
-	
-	// Views
-	UIScrollView *_pagingScrollView;
-	
-	// Paging & layout
-	NSMutableSet *_visiblePages, *_recycledPages;
-	NSUInteger _currentPageIndex;
+    NSArray *_fixedPhotosArray;  // Provided via init
+
+    // Views
+    UIScrollView *_pagingScrollView;
+
+    // Paging & layout
+    NSMutableSet *_visiblePages, *_recycledPages;
+    NSUInteger _currentPageIndex;
     NSUInteger _previousPageIndex;
     CGRect _previousLayoutBounds;
-	NSUInteger _pageIndexBeforeRotation;
-	
-	// Navigation & controls
-	UIToolbar *_toolbar;
-	NSTimer *_controlVisibilityTimer;
-	UIBarButtonItem *_previousButton, *_nextButton, *_actionButton, *_doneButton;
+    NSUInteger _pageIndexBeforeRotation;
+
+    // Navigation & controls
+    UIToolbar *_toolbar;
+    NSTimer *_controlVisibilityTimer;
+    UIBarButtonItem *_previousButton, *_nextButton, *_actionButton, *_doneButton;
     MBProgressHUD *_progressHUD;
-    
+
     // Grid
     MWGridViewController *_gridController;
     UIBarButtonItem *_gridPreviousLeftNavItem;
     UIBarButtonItem *_gridPreviousRightNavItem;
-    
+
     // Appearance
     BOOL _previousNavBarHidden;
     BOOL _previousNavBarTranslucent;
@@ -52,30 +51,33 @@
     UIBarButtonItem *_previousViewControllerBackButton;
     UIImage *_previousNavigationBarBackgroundImageDefault;
     UIImage *_previousNavigationBarBackgroundImageLandscapePhone;
-    
+
     // Video
     MPMoviePlayerViewController *_currentVideoPlayerViewController;
     NSUInteger _currentVideoIndex;
     UIActivityIndicatorView *_currentVideoLoadingIndicator;
-    
+
     // Misc
     BOOL _hasBelongedToViewController;
     BOOL _isVCBasedStatusBarAppearance;
     BOOL _statusBarShouldBeHidden;
     BOOL _displayActionButton;
     BOOL _leaveStatusBarAlone;
-	BOOL _performingLayout;
-	BOOL _rotating;
-    BOOL _viewIsActive; // active as in it's in the view heirarchy
+    BOOL _performingLayout;
+    BOOL _rotating;
+    BOOL _viewIsActive;  // active as in it's in the view heirarchy
     BOOL _didSavePreviousStateOfNavBar;
     BOOL _skipNextPagingScrollViewPositioning;
     BOOL _viewHasAppearedInitially;
     CGPoint _currentGridContentOffset;
-    
+
+    // Customize Appearance
+    UIColor *_toolbarTintColor;
+    UIColor *_backgroundColor;
 }
 
 // Properties
-@property (nonatomic) UIActivityViewController *activityViewController;
+@property(nonatomic) UIActivityViewController *activityViewController;
 
 // Layout
 - (void)layoutVisiblePages;
@@ -133,4 +135,3 @@
 - (void)releaseAllUnderlyingPhotos:(BOOL)preserveCurrent;
 
 @end
-
