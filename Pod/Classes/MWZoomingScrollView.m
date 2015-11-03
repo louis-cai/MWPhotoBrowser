@@ -21,7 +21,6 @@
     MWTapDetectingImageView *_photoImageView;
     DACircularProgressView *_loadingIndicator;
     UIImageView *_loadingError;
-    UIColor *_backgroundColor;
 }
 
 @end
@@ -38,14 +37,14 @@
         _tapView = [[MWTapDetectingView alloc] initWithFrame:self.bounds];
         _tapView.tapDelegate = self;
         _tapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _tapView.backgroundColor = (_backgroundColor == nil) ? [UIColor blackColor] : _backgroundColor;
+        _tapView.backgroundColor = [UIColor blackColor];
         [self addSubview:_tapView];
 
         // Image view
         _photoImageView = [[MWTapDetectingImageView alloc] initWithFrame:CGRectZero];
         _photoImageView.tapDelegate = self;
         _photoImageView.contentMode = UIViewContentModeCenter;
-        _photoImageView.backgroundColor = (_backgroundColor == nil) ? [UIColor blackColor] : _backgroundColor;
+        _photoImageView.backgroundColor = [UIColor blackColor];
         [self addSubview:_photoImageView];
 
         // Loading indicator
@@ -64,7 +63,7 @@
                                                    object:nil];
 
         // Setup
-        self.backgroundColor = (_backgroundColor == nil) ? [UIColor blackColor] : _backgroundColor;
+        self.backgroundColor = [UIColor blackColor];
         self.delegate = self;
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
@@ -421,6 +420,8 @@
 }
 
 - (void)changeBackgroundColor:(UIColor *)color {
-    _backgroundColor = [color copy];
+    _tapView.backgroundColor = [color copy];
+    _photoImageView.backgroundColor = [color copy];
+    self.backgroundColor = [color copy];
 }
 @end

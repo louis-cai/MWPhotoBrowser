@@ -774,6 +774,11 @@ static void *MWVideoPlayerObservation = &MWVideoPlayerObservation;
             MWZoomingScrollView *page = [self dequeueRecycledPage];
             if (!page) {
                 page = [[MWZoomingScrollView alloc] initWithPhotoBrowser:self];
+                if (_backgroundColor == nil) {
+                    [page changeBackgroundColor:[UIColor whiteColor]];
+                } else {
+                    [page changeBackgroundColor:_backgroundColor];
+                }
             }
             [_visiblePages addObject:page];
             [self configurePage:page forIndex:index];
