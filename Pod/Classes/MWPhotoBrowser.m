@@ -1053,7 +1053,7 @@ static void *MWVideoPlayerObservation = &MWVideoPlayerObservation;
             }
             self.title = [NSString stringWithFormat:@"%lu %@", (unsigned long)numberOfPhotos, photosText];
         }
-    } else if (numberOfPhotos > 1) {
+    } else if (numberOfPhotos >= 1) {
         if ([_delegate respondsToSelector:@selector(photoBrowser:titleForPhotoAtIndex:)]) {
             self.title = [_delegate photoBrowser:self titleForPhotoAtIndex:_currentPageIndex];
         } else {
